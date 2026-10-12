@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class QuestionBankService {
 
-    public static final String QUESTION_BANK_CLASSPATH = "static/data/Question_prompt.json";
+    public static final String QUESTION_BANK_CLASSPATH = "data/Question_prompt.json";
     public static final int MINIMUM_QUESTION_COUNT = 365;
 
     private final ObjectMapper objectMapper;

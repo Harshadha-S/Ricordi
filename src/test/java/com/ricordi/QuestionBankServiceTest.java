@@ -63,9 +63,9 @@ class QuestionBankServiceTest {
     }
 
     @Test
-    @DisplayName("Should verify authoritative question bank classpath path is static/data/Question_prompt.json")
+    @DisplayName("Should verify authoritative question bank classpath path is data/Question_prompt.json")
     void testAuthoritativeQuestionBankPath() {
-        assertEquals("static/data/Question_prompt.json", questionBankService.getQuestionBankPath());
+        assertEquals("data/Question_prompt.json", questionBankService.getQuestionBankPath());
     }
 
     @Test
