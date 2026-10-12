@@ -1,0 +1,9 @@
+<nav class="site-header" th:fragment="navbar" xmlns:th="http://www.thymeleaf.org">
+    <a class="brand" th:href="@{/dashboard}">Ricordi</a>
+    <a th:href="@{/memories}">Memories</a>
+    <a th:href="@{/calendar}">Calendar</a>
+    <form th:action="@{/logout}" method="post" style="display:inline">
+        <button type="submit">Sign out</button>
+    </form>
+</nav>
+

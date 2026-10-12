@@ -1,0 +1,7 @@
+/node_modules/
+/target/
+/uploads/
+/scratch/
+.env
+.env.*
+!.env.example

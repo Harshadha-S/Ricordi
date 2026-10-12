@@ -1,0 +1,257 @@
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Allura';
+    src: url('../fonts/Allura/Allura-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+:root {
+    /* Established Brand Color Tokens */
+    --burgundy: #6C0820;
+    --burgundy-dark: #4A0516;
+    --burgundy-light: #8C1C36;
+    --cherry-blossom: #F2AEBC;
+    --misty-rose: #F2DCDB;
+    --soft-light-blue: #C4D9E8;
+    --silver-lake-blue: #5A86CB;
+    --lapis-lazuli: #3D5D91;
+    --warm-ivory: #FFF9F0;
+
+    /* Semantic Tokens */
+    --paper: var(--warm-ivory);
+    --paper-warm: var(--warm-ivory);
+    --paper-cream: var(--warm-ivory);
+    --ink: #352B2D;
+    --ink-dark: #2B181C;
+    --gold-accent: #D4AF37;
+    --gold-dark: #8B6B23;
+
+    --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --font-handwritten: 'Allura', cursive, 'Brush Script MT', sans-serif;
+    --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--soft-light-blue);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(255, 249, 240, 0.45) 0%, transparent 65%),
+        var(--soft-light-blue);
+    overflow-x: hidden;
+}
+
+a {
+    color: var(--lapis-lazuli);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--burgundy);
+    text-decoration: underline;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--burgundy);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+.site-header {
+    flex-shrink: 0;
+    padding: 0.6rem clamp(1rem, 4vw, 2.5rem);
+    background: var(--burgundy);
+    color: var(--warm-ivory);
+    box-shadow: 0 2px 10px rgba(108, 8, 32, 0.15);
+}
+
+.site-header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.site-footer {
+    flex-shrink: 0;
+    padding: 0.55rem 1rem;
+    background: var(--burgundy);
+    color: var(--warm-ivory);
+    text-align: center;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(242, 174, 188, 0.3);
+}
+
+.album-main-container {
+    flex: 1;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0.25rem 0.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-header a,
+.site-footer a {
+    color: var(--warm-ivory);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.site-header a:hover,
+.site-footer a:hover {
+    color: var(--cherry-blossom);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-display);
+    color: var(--burgundy);
+    font-weight: 600;
+}
+
+.brand {
+    font-family: var(--font-display);
+    color: var(--warm-ivory);
+    font-weight: 600;
+    font-size: 1.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+}
+
+.brand-logo {
+    height: 38px;
+    width: 38px;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(43, 24, 28, 0.35));
+}
+
+button,
+.button {
+    display: inline-block;
+    border: 0;
+    border-radius: 0.25rem;
+    padding: 0.7rem 1.2rem;
+    background: var(--burgundy);
+    color: var(--warm-ivory);
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(108, 8, 32, 0.2);
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover,
+.button:hover {
+    background: var(--burgundy-light);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(108, 8, 32, 0.25);
+    color: var(--warm-ivory);
+    text-decoration: none;
+}
+
+button:focus-visible,
+.button:focus-visible {
+    outline: 3px solid var(--cherry-blossom);
+    outline-offset: 3px;
+}
+
+.paper-card {
+    width: min(48rem, calc(100% - 2rem));
+    margin: 3rem auto;
+    padding: clamp(2rem, 6vw, 4rem);
+    background: var(--warm-ivory);
+    border: 1px solid var(--cherry-blossom);
+    box-shadow: 0.6rem 0.8rem 1.6rem rgba(61, 93, 145, 0.15);
+    transform: rotate(-0.4deg);
+}
+
+.paper-card a,
+.ricordi-spread a {
+    color: var(--lapis-lazuli);
+}
+
+.paper-card a:hover,
+.ricordi-spread a:hover {
+    color: var(--burgundy);
+}
+
+input,
+select,
+textarea {
+    display: block;
+    width: 100%;
+    margin: 0.4rem 0 1rem;
+    padding: 0.7rem;
+    border: 1px solid var(--cherry-blossom);
+    background: var(--warm-ivory);
+    color: var(--ink);
+    font: inherit;
+    border-radius: 4px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--lapis-lazuli);
+    outline: 2px solid var(--lapis-lazuli);
+    outline-offset: 1px;
+    background: white;
+}
+

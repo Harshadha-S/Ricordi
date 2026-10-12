@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ricordi Scrapbook</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/scrapbook.css}">
+    <link rel="stylesheet" th:href="@{/css/album.css}">
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="site-header-inner">
+        <a class="brand" th:href="@{/}">Ricordi</a>
+    </div>
+</header>
+
+<main class="album-main-container">
+    <!-- Single 366-Day Master Scrapbook Album -->
+    <div th:replace="~{fragments/album :: album('Ricordi Scrapbook', '366 Days of Memories', '2026', 'seal 1.jpg', 'Ricordi')}"></div>
+</main>
+
+<footer class="site-footer">
+    <span>Made for memories · <span data-current-year>2026</span></span>
+</footer>
+
+<script th:src="@{/js/main.js}" defer></script>
+<script th:src="@{/js/album.js}" defer></script>
+</body>
+</html>

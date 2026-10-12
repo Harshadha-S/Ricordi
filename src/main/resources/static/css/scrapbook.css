@@ -1,0 +1,179 @@
+/* Ricordi — Scrapbook Decorative Components & Library Styling */
+
+.scrapbook-note {
+    position: relative;
+    padding: 1.5rem;
+    background: var(--warm-ivory);
+    border: 1px solid var(--cherry-blossom);
+    box-shadow: 0.25rem 0.35rem 0.8rem rgba(61, 93, 145, 0.14);
+}
+
+.scrapbook-note::before {
+    position: absolute;
+    top: -0.65rem;
+    left: 42%;
+    width: 5rem;
+    height: 1.3rem;
+    background: rgba(90, 134, 203, 0.45);
+    content: "";
+    transform: rotate(-3deg);
+}
+
+.accent-blue {
+    color: var(--lapis-lazuli);
+}
+
+/* ==========================================================================
+   Lucide Icons Global Helpers
+   ========================================================================== */
+.btn-icon,
+.label-icon,
+.brand-icon,
+.limit-icon,
+.empty-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: -0.15em;
+    width: 1.1em;
+    height: 1.1em;
+    stroke-width: 2.2;
+}
+
+.brand-icon {
+    width: 1.3em;
+    height: 1.3em;
+    margin-right: 0.3rem;
+    stroke: var(--cherry-blossom);
+}
+
+/* ==========================================================================
+   Scrawl UI Washi Tape & Paper Components
+   ========================================================================== */
+.scrawl-tape {
+    position: absolute;
+    width: 76px;
+    height: 22px;
+    background: rgba(242, 174, 188, 0.65);
+    border: 1px dashed var(--cherry-blossom);
+    pointer-events: none;
+    z-index: 8;
+    opacity: 0.88;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+    clip-path: polygon(0% 0%, 96% 2%, 100% 98%, 4% 100%);
+}
+
+.tape-top-left {
+    top: -6px;
+    left: 40px;
+    transform: rotate(-4deg);
+}
+
+.tape-top-right {
+    top: -6px;
+    right: 40px;
+    transform: rotate(3deg);
+}
+
+.scrawl-paper-card {
+    border-radius: 8px !important;
+    border: 1.5px solid var(--cherry-blossom) !important;
+    box-shadow: 0 4px 12px rgba(61, 93, 145, 0.08) !important;
+}
+
+/* ==========================================================================
+   SortableJS Drag-and-Drop Polaroid Styling
+   ========================================================================== */
+.ricordi-polaroid-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 0.35rem;
+}
+
+.ricordi-drag-handle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    color: var(--silver-lake-blue);
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.ricordi-drag-handle:hover {
+    color: var(--lapis-lazuli);
+    background: rgba(90, 134, 203, 0.12);
+}
+
+.ricordi-drag-handle:active {
+    cursor: grabbing;
+}
+
+.sortable-ghost {
+    opacity: 0.4 !important;
+    transform: scale(0.96) !important;
+    border: 2px dashed var(--silver-lake-blue) !important;
+}
+
+.sortable-chosen {
+    box-shadow: 0 12px 28px rgba(61, 93, 145, 0.28) !important;
+    z-index: 25 !important;
+    transform: scale(1.03) !important;
+}
+
+.sortable-drag {
+    opacity: 0.95 !important;
+}
+
+/* ==========================================================================
+   FilePond Custom Ricordi Theme Integration
+   ========================================================================== */
+.filepond--root {
+    font-family: var(--font-body) !important;
+    margin-bottom: 0 !important;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.filepond--panel-root {
+    background-color: var(--warm-ivory) !important;
+    border: 1.5px dashed var(--silver-lake-blue) !important;
+    border-radius: 18px !important;
+}
+
+.filepond--drop-label {
+    color: var(--lapis-lazuli) !important;
+    font-weight: 600 !important;
+    font-size: 0.84rem !important;
+}
+
+.filepond--label-action {
+    color: var(--burgundy) !important;
+    text-decoration-color: var(--cherry-blossom) !important;
+}
+
+.filepond--item-panel {
+    background-color: var(--lapis-lazuli) !important;
+}
+
+.filepond--file-action-button {
+    background-color: var(--burgundy) !important;
+    color: var(--warm-ivory) !important;
+}
+
+.filepond-upload-icon {
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 0.35rem;
+    vertical-align: -0.2em;
+    stroke: var(--burgundy);
+}
+
+.pond-count {
+    font-weight: 700;
+    color: var(--burgundy);
+}

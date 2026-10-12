@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ricordi — Keep what matters</title>
+    <link rel="icon" type="image/svg+xml" th:href="@{/images/logo.svg}">
+
+    <!-- Vendor Libraries CSS -->
+    <link rel="stylesheet" th:href="@{/vendor/filepond/filepond.min.css}">
+    <link rel="stylesheet" th:href="@{/vendor/filepond/filepond-plugin-image-preview.min.css}">
+    <link rel="stylesheet" th:href="@{/vendor/scrawl-ui/scrawl.css}">
+
+    <!-- Application CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/scrapbook.css}">
+    <link rel="stylesheet" th:href="@{/css/album.css}">
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="site-header-inner">
+        <a class="brand" th:href="@{/}">
+            <img th:src="@{/images/logo.svg}" alt="Ricordi" class="brand-logo" width="38" height="38" />
+            <span class="brand-text">Ricordi</span>
+        </a>
+    </div>
+</header>
+
+<main class="album-main-container">
+    <!-- Single 365-Day Master Scrapbook Album (2027 Edition) -->
+    <div th:replace="~{fragments/album :: album('Ricordi Scrapbook', '365 Days of Memories', ${albumYear ?: '2027'}, 'seal 1.jpg', 'Ricordi')}"></div>
+</main>
+
+<footer class="site-footer">
+    <div class="site-footer-inner">
+        <span>Made for memories · <span data-current-year th:text="${albumYear ?: '2027'}">2027</span></span>
+    </div>
+</footer>
+
+<!-- Vendor Libraries JavaScript -->
+<script th:src="@{/vendor/filepond/filepond-plugin-file-validate-size.min.js}"></script>
+<script th:src="@{/vendor/filepond/filepond-plugin-file-validate-type.min.js}"></script>
+<script th:src="@{/vendor/filepond/filepond-plugin-image-preview.min.js}"></script>
+<script th:src="@{/vendor/filepond/filepond.min.js}"></script>
+<script th:src="@{/vendor/sortablejs/Sortable.min.js}"></script>
+<script th:src="@{/vendor/lucide/lucide.min.js}"></script>
+<script th:src="@{/vendor/scrawl-ui/scrawl.js}"></script>
+<script th:src="@{/vendor/scrawl-ui/icons.js}"></script>
+
+<!-- Application JavaScript -->
+<script th:src="@{/js/main.js}" defer></script>
+<script th:src="@{/js/album.js}" defer></script>
+</body>
+</html>

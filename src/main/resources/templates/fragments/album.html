@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Reusable Single 365-Day Album Fragment (2027 Edition) -->
+<div th:fragment="album(title, subtitle, date, sealImage, ownerName)"
+     class="ricordi-album-viewport">
+
+    <div class="ricordi-album"
+         id="ricordi-album-master"
+         role="region"
+         tabindex="0"
+         aria-expanded="false"
+         th:aria-label="${'Ricordi 365-Day Digital Scrapbook: ' + (title ?: 'Ricordi Album')}">
+
+        <!-- 1. Physical Back Cover -->
+        <div class="ricordi-album-back" aria-hidden="true"></div>
+
+        <!-- 2. Physical Spine -->
+        <div class="ricordi-album-spine" aria-hidden="true"></div>
+
+        <!-- 3. Pages Stack & Inside Two-Page Spread -->
+        <div class="ricordi-album-pages-stack">
+            
+            <div class="ricordi-spread" id="ricordiSpread" aria-live="polite">
+                <!-- Spine Seam Shadow -->
+                <div class="ricordi-spread-spine-seam" aria-hidden="true"></div>
+
+                <!-- STATIONARY LEFT PAGE OF SPREAD -->
+                <div class="ricordi-page-left" id="ricordiPageLeft">
+                    <!-- Scrapbook Washi Tape Accent (Non-blocking) -->
+                    <div class="scrawl-tape tape-top-left" aria-hidden="true"></div>
+
+                    <div class="ricordi-day-header">
+                        <span class="ricordi-day-title" id="ricordiDayTitle">DAY 1 OF 365</span>
+                        <span class="ricordi-date-badge" id="ricordiDateBadge">January 1, 2027</span>
+                    </div>
+
+                    <!-- Daily Question Prompt Box -->
+                    <div class="ricordi-question-card scrawl-paper-card">
+                        <span class="ricordi-question-number" id="ricordiQuestionNum" th:text="${initialQuestionId != null ? 'DAILY QUESTION #' + initialQuestionId : 'DAILY QUESTION #1'}">DAILY QUESTION #1</span>
+                        <p class="ricordi-question-text" id="ricordiQuestionText" th:text="${initialQuestionText ?: 'What do you value most in life, and why?'}">What do you value most in life, and why?</p>
+                    </div>
+
+                    <!-- Persistent Journal Writing Area -->
+                    <div class="ricordi-journal-editor-wrap">
+                        <textarea id="ricordiAnswerTextarea"
+                                  class="ricordi-journal-textarea"
+                                  placeholder="Write your thoughts here..."
+                                  aria-label="Daily Journal Response"
+                                  rows="6"></textarea>
+                        <div class="ricordi-editor-footer">
+                            <span id="ricordiWordCount" class="ricordi-word-count">0 / 500 words</span>
+                            <span id="ricordiSaveStatus" class="ricordi-save-status" aria-live="polite"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STATIONARY RIGHT PAGE OF SPREAD -->
+                <div class="ricordi-page-right" id="ricordiPageRight">
+                    <!-- Scrapbook Washi Tape Accent (Non-blocking) -->
+                    <div class="scrawl-tape tape-top-right" aria-hidden="true"></div>
+
+                    <div class="ricordi-journal-header">
+                        <h3 class="ricordi-journal-heading" id="ricordiJournalHeading">Memories for January 1, 2027</h3>
+                        <span class="ricordi-journal-tag" id="ricordiJournalTag">Day 1</span>
+                    </div>
+
+                    <!-- Personal Photo Scrapbook Collage Area -->
+                    <div id="ricordiPhotoScrapbook" class="ricordi-photo-scrapbook">
+                        <!-- Drag-and-Drop Sortable Photo Container -->
+                        <div id="ricordiPhotoContainer" class="ricordi-photo-container">
+                            <!-- Dynamic Polaroid Cards (Max 3 per date) with SortableJS reordering -->
+                        </div>
+
+                        <!-- FilePond Upload Area -->
+                        <div id="ricordiUploadArea" class="ricordi-upload-area">
+                            <div id="ricordiFilePondWrap" class="ricordi-filepond-wrap">
+                                <input type="file" id="ricordiFilePondInput" class="filepond" name="file" accept="image/jpeg,image/png,image/webp" />
+                            </div>
+                            <span id="ricordiPhotoLimitMsg" class="ricordi-photo-limit-msg" style="display:none;">
+                                <i data-lucide="check-circle" class="limit-icon"></i> Page is full (3/3 photos)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC 3D TURNING LEAF (FLIPPER) -->
+                <div class="ricordi-turning-leaf" id="ricordiTurningLeaf" aria-hidden="true">
+                    <!-- Front face of turning leaf -->
+                    <div class="ricordi-leaf-face ricordi-leaf-front" id="ricordiLeafFront">
+                        <div class="ricordi-leaf-content" id="ricordiLeafFrontContent"></div>
+                        <div class="ricordi-leaf-shadow" id="ricordiLeafFrontShadow"></div>
+                    </div>
+                    <!-- Back face of turning leaf -->
+                    <div class="ricordi-leaf-face ricordi-leaf-back" id="ricordiLeafBack">
+                        <div class="ricordi-leaf-content" id="ricordiLeafBackContent"></div>
+                        <div class="ricordi-leaf-shadow" id="ricordiLeafBackShadow"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- 4. Front Cover Assembly (Hinged on the spine) -->
+        <div class="ricordi-album-front-assembly" id="ricordiFrontAssembly">
+            <!-- Front Face of Cover -->
+            <div class="ricordi-album-front-face">
+                <div class="ricordi-album-hinge-shadow"></div>
+
+                <!-- Wax Seal -->
+                <div class="ricordi-album-seal">
+                    <img th:src="@{/images/decorations/__${sealImage ?: 'seal 1.jpg'}__}"
+                         alt="Wax Seal"
+                         class="ricordi-album-seal-img" />
+                </div>
+            </div>
+
+            <!-- Reverse / Back Face of Front Cover -->
+            <div class="ricordi-album-front-backface" aria-hidden="true">
+                <div class="ricordi-bookplate">
+                    <div class="ricordi-bookplate-label">This scrapbook belongs to</div>
+                    <p class="ricordi-bookplate-owner" th:text="${ownerName ?: 'Ricordi Journal'}">Ricordi Journal</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- External Date Navigation & Toggle Controls with Lucide Icons -->
+    <div class="ricordi-album-controls">
+        <button class="ricordi-album-toggle-btn"
+                id="ricordiToggleBtn"
+                aria-expanded="false">
+            <i data-lucide="book-open" class="btn-icon"></i>
+            <span id="ricordiToggleBtnText">Open Album</span>
+        </button>
+
+        <!-- Spread Navigation Bar (visible when open) -->
+        <div class="ricordi-spread-nav" id="ricordiSpreadNav" style="display: none;">
+            <button class="ricordi-nav-btn" id="ricordiPrevDayBtn" title="Previous Day (Left Arrow)">
+                <i data-lucide="chevron-left" class="btn-icon"></i> Previous Day
+            </button>
+            <div class="ricordi-date-picker-wrap">
+                <label for="ricordiDateInput" class="ricordi-date-label">
+                    <i data-lucide="calendar" class="label-icon"></i> Date:
+                </label>
+                <input type="date" id="ricordiDateInput" class="ricordi-date-input" value="2027-01-01" min="2027-01-01" max="2027-12-31" />
+            </div>
+            <button class="ricordi-nav-btn" id="ricordiNextDayBtn" title="Next Day (Right Arrow)">
+                Next Day <i data-lucide="chevron-right" class="btn-icon"></i>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

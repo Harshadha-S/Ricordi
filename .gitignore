@@ -1,0 +1,13 @@
+target/
+.idea/
+.vscode/
+*.iml
+.env
+.env.*
+!.env.example
+*.log
+/node_modules/
+/scratch/
+/uploads/
+src/main/resources/static/uploads/*
+!src/main/resources/static/uploads/.gitkeep

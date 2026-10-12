@@ -1,0 +1,18 @@
+{
+  "name": "ricordi",
+  "version": "1.0.0",
+  "description": "Ricordi — Digital Scrapbook & Journal",
+  "main": "src/main/resources/static/js/album.js",
+  "scripts": {
+    "copy-vendor": "node scripts/copy-vendor.js"
+  },
+  "dependencies": {
+    "filepond": "^4.32.12",
+    "filepond-plugin-file-validate-size": "^2.2.8",
+    "filepond-plugin-file-validate-type": "^1.2.9",
+    "filepond-plugin-image-preview": "^4.6.12",
+    "lucide": "^1.55.0",
+    "scrawl-ui": "^0.1.0",
+    "sortablejs": "^1.15.7"
+  }
+}

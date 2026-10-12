@@ -1,0 +1,13 @@
+@media (max-width: 600px) {
+    .paper-card {
+        margin: 2rem auto;
+        padding: 1.5rem;
+        transform: none;
+    }
+
+    .site-header,
+    .site-footer {
+        padding: 1rem;
+    }
+}
+
