@@ -38,7 +38,8 @@
     font-display: swap;
 }
 
-:root {
+:root,
+[data-theme="timeless"] {
     /* Established Brand Color Tokens */
     --burgundy: #6C0820;
     --burgundy-dark: #4A0516;
@@ -63,9 +64,92 @@
     --font-handwritten: 'Allura', cursive, 'Brush Script MT', sans-serif;
     --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
 
+    /* Theme Tokens — Timeless (Original Ricordi) */
+    --theme-name: "Timeless";
+    --theme-primary: var(--burgundy);
+    --theme-primary-hover: var(--burgundy-light);
+    --theme-header-bg: var(--burgundy);
+    --theme-header-text: var(--warm-ivory);
+    --theme-footer-bg: var(--burgundy);
+    --theme-footer-text: var(--warm-ivory);
+    --theme-bg-gradient: radial-gradient(ellipse at 50% 38%, rgba(255, 249, 240, 0.65) 0%, rgba(196, 217, 232, 0.45) 42%, rgba(90, 134, 203, 0.28) 75%, rgba(61, 93, 145, 0.22) 100%), var(--soft-light-blue);
+    --theme-watermark-color: rgba(61, 93, 145, 0.09);
+    --theme-border: var(--cherry-blossom);
+    --theme-highlight: var(--cherry-blossom);
+    --theme-accent: var(--lapis-lazuli);
+    --theme-surface-subtle: var(--misty-rose);
+
     font-family: var(--font-body);
     color: var(--ink);
     background: var(--soft-light-blue);
+}
+
+/* Theme A — Cherry Blossom: #F2AEBC, #F2DCDB, #5A86CB, #FFF9F0, #6C0820 */
+[data-theme="cherry-blossom"] {
+    --theme-name: "Cherry Blossom";
+    --theme-primary: #6C0820;
+    --theme-primary-hover: #5A86CB;
+    --theme-header-bg: #6C0820;
+    --theme-header-text: #FFF9F0;
+    --theme-footer-bg: #6C0820;
+    --theme-footer-text: #FFF9F0;
+    --theme-bg-gradient: radial-gradient(ellipse at 50% 38%, rgba(255, 249, 240, 0.78) 0%, rgba(242, 174, 188, 0.45) 40%, rgba(242, 220, 219, 0.85) 72%, rgba(90, 134, 203, 0.22) 95%, rgba(108, 8, 32, 0.12) 100%), #F2DCDB;
+    --theme-watermark-color: rgba(242, 174, 188, 0.22);
+    --theme-border: #F2AEBC;
+    --theme-highlight: #F2AEBC;
+    --theme-accent: #5A86CB;
+    --theme-surface-subtle: #F2DCDB;
+}
+
+/* Theme B — Golden Summer: #FFF9F0, #C49A52, #91B8CB, #F2DCDB, #6C0820 */
+[data-theme="golden-summer"] {
+    --theme-name: "Golden Summer";
+    --theme-primary: #6C0820;
+    --theme-primary-hover: #C49A52;
+    --theme-header-bg: #6C0820;
+    --theme-header-text: #FFF9F0;
+    --theme-footer-bg: #6C0820;
+    --theme-footer-text: #FFF9F0;
+    --theme-bg-gradient: radial-gradient(ellipse at 50% 38%, rgba(255, 249, 240, 0.85) 0%, rgba(196, 154, 82, 0.35) 38%, rgba(145, 184, 203, 0.42) 74%, rgba(196, 154, 82, 0.28) 92%, rgba(108, 8, 32, 0.14) 100%), #FFF9F0;
+    --theme-watermark-color: rgba(196, 154, 82, 0.16);
+    --theme-border: #C49A52;
+    --theme-highlight: #91B8CB;
+    --theme-accent: #C49A52;
+    --theme-surface-subtle: #F2DCDB;
+}
+
+/* Theme C — Autumn Letters: #6C0820, #9B594B, #D6A16B, #FFF9F0, #5A86CB */
+[data-theme="autumn-letters"] {
+    --theme-name: "Autumn Letters";
+    --theme-primary: #6C0820;
+    --theme-primary-hover: #9B594B;
+    --theme-header-bg: #6C0820;
+    --theme-header-text: #FFF9F0;
+    --theme-footer-bg: #6C0820;
+    --theme-footer-text: #FFF9F0;
+    --theme-bg-gradient: radial-gradient(ellipse at 50% 38%, rgba(255, 249, 240, 0.88) 0%, rgba(214, 161, 107, 0.42) 38%, rgba(155, 89, 75, 0.38) 72%, rgba(108, 8, 32, 0.22) 100%), #FFF9F0;
+    --theme-watermark-color: rgba(155, 89, 75, 0.16);
+    --theme-border: #9B594B;
+    --theme-highlight: #D6A16B;
+    --theme-accent: #9B594B;
+    --theme-surface-subtle: #FFF9F0;
+}
+
+/* Theme D — Winter Hush: #789DBB, #EAF2F7, #5A86CB, #FFF9F0, #6C0820 */
+[data-theme="winter-hush"] {
+    --theme-name: "Winter Hush";
+    --theme-primary: #6C0820;
+    --theme-primary-hover: #5A86CB;
+    --theme-header-bg: #6C0820;
+    --theme-header-text: #FFF9F0;
+    --theme-footer-bg: #6C0820;
+    --theme-footer-text: #FFF9F0;
+    --theme-bg-gradient: radial-gradient(ellipse at 50% 38%, rgba(234, 242, 247, 0.95) 0%, rgba(120, 157, 187, 0.45) 40%, rgba(90, 134, 203, 0.38) 76%, rgba(108, 8, 32, 0.12) 100%), #EAF2F7;
+    --theme-watermark-color: rgba(120, 157, 187, 0.18);
+    --theme-border: #789DBB;
+    --theme-highlight: #789DBB;
+    --theme-accent: #5A86CB;
+    --theme-surface-subtle: #EAF2F7;
 }
 
 * {
@@ -78,10 +162,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background:
-        radial-gradient(ellipse at 50% 0%, rgba(255, 249, 240, 0.45) 0%, transparent 65%),
-        var(--soft-light-blue);
+    background: var(--theme-bg-gradient);
+    transition: background 0.4s ease;
     overflow-x: hidden;
+    position: relative;
 }
 
 a {
@@ -103,10 +187,13 @@ a:focus-visible {
 
 .site-header {
     flex-shrink: 0;
-    padding: 0.6rem clamp(1rem, 4vw, 2.5rem);
-    background: var(--burgundy);
-    color: var(--warm-ivory);
+    padding: 0.5rem clamp(1rem, 4vw, 2.5rem);
+    background: var(--theme-header-bg);
+    color: var(--theme-header-text);
     box-shadow: 0 2px 10px rgba(108, 8, 32, 0.15);
+    transition: background 0.4s ease, color 0.4s ease;
+    position: relative;
+    z-index: 50;
 }
 
 .site-header-inner {
@@ -120,11 +207,59 @@ a:focus-visible {
 .site-footer {
     flex-shrink: 0;
     padding: 0.55rem 1rem;
-    background: var(--burgundy);
-    color: var(--warm-ivory);
+    background: var(--theme-footer-bg);
+    color: var(--theme-footer-text);
     text-align: center;
     font-size: 0.85rem;
     border-top: 1px solid rgba(242, 174, 188, 0.3);
+    transition: background 0.4s ease, color 0.4s ease;
+    position: relative;
+    z-index: 50;
+}
+
+.site-footer.landing-footer {
+    background: transparent;
+    border-top: none;
+    box-shadow: none;
+    padding: 0.85rem 1rem 1.25rem;
+    color: var(--burgundy);
+    transition: color 0.4s ease;
+}
+
+.landing-footer-inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.65rem 0.85rem;
+    margin: 0 auto;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.025em;
+}
+
+.landing-footer-phrase {
+    font-style: italic;
+    color: var(--burgundy);
+    opacity: 0.9;
+}
+
+.landing-footer-sep {
+    font-size: 0.65rem;
+    color: var(--theme-accent, var(--burgundy));
+    opacity: 0.75;
+    user-select: none;
+    line-height: 1;
+}
+
+.landing-footer-year {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--burgundy);
+    opacity: 0.8;
 }
 
 .album-main-container {
@@ -138,6 +273,7 @@ a:focus-visible {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .site-header a,
@@ -164,20 +300,48 @@ h3 {
     font-family: var(--font-display);
     color: var(--warm-ivory);
     font-weight: 600;
-    font-size: 1.4rem;
+    font-size: 1.45rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.65rem;
+    gap: 0.45rem;
     text-decoration: none;
     letter-spacing: 0.03em;
 }
 
 .brand-logo {
-    height: 38px;
-    width: 38px;
+    height: 48px;
+    width: 48px;
     object-fit: contain;
     display: block;
-    filter: drop-shadow(0 2px 4px rgba(43, 24, 28, 0.35));
+    flex-shrink: 0;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45))
+            drop-shadow(0 0 7px rgba(244, 213, 154, 0.4))
+            brightness(1.06)
+            contrast(1.05);
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.brand:hover .brand-logo {
+    transform: scale(1.04);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5))
+            drop-shadow(0 0 10px rgba(244, 213, 154, 0.6))
+            brightness(1.1)
+            contrast(1.06);
+}
+
+.brand-text {
+    font-family: var(--font-display);
+    color: var(--warm-ivory);
+    font-weight: 600;
+    font-size: 1.45rem;
+    letter-spacing: 0.035em;
+    text-shadow: 0 1px 3px rgba(43, 24, 28, 0.55);
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.brand:hover .brand-text {
+    color: #FFFDF9;
+    text-shadow: 0 1px 4px rgba(43, 24, 28, 0.65), 0 0 8px rgba(242, 174, 188, 0.25);
 }
 
 button,
@@ -253,5 +417,909 @@ textarea:focus {
     outline: 2px solid var(--lapis-lazuli);
     outline-offset: 1px;
     background: white;
+}
+
+/* ==========================================================================
+   Oversized Background Typography
+   ========================================================================== */
+.ricordi-bg-watermark {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 15vw, 13rem);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--theme-watermark-color);
+    text-transform: lowercase;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    white-space: nowrap;
+    transition: color 0.5s ease;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   Theme Selector Component & Popover
+   ========================================================================== */
+.theme-selector-wrap {
+    position: relative;
+}
+
+.theme-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(74, 5, 22, 0.45);
+    border: 1px solid rgba(242, 174, 188, 0.4);
+    color: var(--warm-ivory);
+    padding: 0.4rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+    background: rgba(108, 8, 32, 0.7);
+    border-color: var(--cherry-blossom);
+    transform: translateY(-1px);
+}
+
+.theme-toggle-btn:focus-visible {
+    outline: 2px solid var(--cherry-blossom);
+    outline-offset: 2px;
+}
+
+.theme-toggle-title {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.theme-current-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: 10px;
+    background: rgba(255, 249, 240, 0.18);
+    color: var(--warm-ivory);
+    font-weight: 500;
+}
+
+.theme-toggle-btn .chevron-icon {
+    width: 0.9em;
+    height: 0.9em;
+    transition: transform 0.2s ease;
+}
+
+.theme-toggle-btn[aria-expanded="true"] .chevron-icon {
+    transform: rotate(180deg);
+}
+
+.theme-popover {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 290px;
+    background: var(--warm-ivory);
+    border: 1.5px solid var(--theme-border, #F2AEBC);
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(43, 24, 28, 0.22);
+    padding: 0.75rem;
+    z-index: 1000;
+    color: var(--ink);
+    animation: themePopoverFadeIn 0.2s ease-out;
+}
+
+@keyframes themePopoverFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.theme-popover[hidden] {
+    display: none !important;
+}
+
+.theme-popover-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px dashed rgba(108, 8, 32, 0.18);
+}
+
+.theme-popover-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--burgundy);
+    letter-spacing: 0.02em;
+}
+
+.theme-popover-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    padding: 0.25rem;
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--burgundy);
+    box-shadow: none;
+    transform: none;
+}
+
+.theme-popover-close:hover {
+    background: rgba(108, 8, 32, 0.08);
+    color: var(--burgundy);
+    transform: none;
+    box-shadow: none;
+}
+
+.theme-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.5rem 0.6rem;
+    border: 1.5px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ink);
+    text-align: left;
+    cursor: pointer;
+    box-shadow: none;
+    transform: none;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.theme-option:hover {
+    background: rgba(242, 220, 219, 0.45);
+    color: var(--ink);
+    transform: none;
+    box-shadow: none;
+}
+
+.theme-option:focus-visible {
+    outline: 2px solid var(--burgundy);
+    outline-offset: 1px;
+}
+
+.theme-option[aria-checked="true"] {
+    border-color: var(--burgundy);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.theme-swatch-bar {
+    display: flex;
+    gap: 2px;
+    flex-shrink: 0;
+    padding: 2px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+
+.theme-swatch-bar span {
+    display: inline-block;
+    width: 8px;
+    height: 18px;
+    border-radius: 1px;
+}
+
+.theme-meta {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.theme-name {
+    font-family: var(--font-display);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--burgundy);
+    line-height: 1.2;
+}
+
+.theme-desc {
+    font-size: 0.72rem;
+    color: #635356;
+    margin-top: 0.1rem;
+}
+
+.theme-check-mark {
+    width: 1.1em;
+    height: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--burgundy);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.theme-option[aria-checked="true"] .theme-check-mark {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   Seasonal Ambient Particle Layer
+   ========================================================================== */
+.seasonal-ambient-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Cherry Blossom Petals */
+.particle-petal {
+    position: absolute;
+    top: -40px;
+    width: 16px;
+    height: 22px;
+    background: radial-gradient(circle at 40% 30%, #FFF9F0 0%, #F2AEBC 65%, #6C0820 100%);
+    border-radius: 50% 50% 50% 0;
+    opacity: 0.75;
+    pointer-events: none;
+    animation: petalFall linear infinite;
+    will-change: transform;
+}
+
+@keyframes petalFall {
+    0% {
+        transform: translate3d(0, -30px, 0) rotate(0deg) rotateY(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.75;
+    }
+    100% {
+        transform: translate3d(var(--drift-x, 80px), calc(100vh + 60px), 0) rotate(360deg) rotateY(180deg);
+        opacity: 0;
+    }
+}
+
+/* Golden Summer Sunlight Dust Motes */
+.particle-mote {
+    position: absolute;
+    width: var(--mote-size, 6px);
+    height: var(--mote-size, 6px);
+    background: radial-gradient(circle, #FFF9F0 0%, #C49A52 75%, transparent 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    box-shadow: 0 0 6px rgba(196, 154, 82, 0.6);
+    animation: moteFloat ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+@keyframes moteFloat {
+    0% {
+        transform: translate3d(0, 0, 0) scale(0.6);
+        opacity: 0;
+    }
+    30% {
+        opacity: 0.65;
+    }
+    70% {
+        opacity: 0.8;
+        transform: translate3d(var(--drift-x, 25px), var(--drift-y, -60px), 0) scale(1.1);
+    }
+    100% {
+        transform: translate3d(calc(var(--drift-x, 25px) * 1.5), calc(var(--drift-y, -60px) * 2), 0) scale(0.6);
+        opacity: 0;
+    }
+}
+
+/* Autumn Letters Falling Leaves */
+.particle-leaf {
+    position: absolute;
+    top: -45px;
+    width: 20px;
+    height: 26px;
+    background: linear-gradient(135deg, #D6A16B 0%, #9B594B 60%, #6C0820 100%);
+    clip-path: polygon(50% 0%, 80% 20%, 100% 55%, 75% 85%, 50% 100%, 25% 85%, 0% 55%, 20% 20%);
+    opacity: 0.8;
+    pointer-events: none;
+    animation: leafFall linear infinite;
+    will-change: transform;
+}
+
+@keyframes leafFall {
+    0% {
+        transform: translate3d(0, -35px, 0) rotate(0deg) scale(0.9);
+        opacity: 0;
+    }
+    12% {
+        opacity: 0.85;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate3d(var(--drift-x, -90px), calc(100vh + 60px), 0) rotate(420deg) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Winter Hush Snowflakes */
+.particle-snowflake {
+    position: absolute;
+    top: -30px;
+    width: var(--flake-size, 8px);
+    height: var(--flake-size, 8px);
+    background: radial-gradient(circle, #FFF9F0 0%, #EAF2F7 60%, rgba(120, 157, 187, 0.4) 100%);
+    border-radius: 50%;
+    opacity: 0.75;
+    pointer-events: none;
+    animation: snowFall linear infinite;
+    will-change: transform;
+}
+
+@keyframes snowFall {
+    0% {
+        transform: translate3d(0, -25px, 0);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.85;
+    }
+    90% {
+        opacity: 0.75;
+    }
+    100% {
+        transform: translate3d(var(--drift-x, 40px), calc(100vh + 50px), 0);
+        opacity: 0;
+    }
+}
+
+/* Reduced Motion Accessibility Overrides */
+@media (prefers-reduced-motion: reduce) {
+    body {
+        transition: none !important;
+    }
+
+    .seasonal-ambient-layer,
+    .particle-petal,
+    .particle-mote,
+    .particle-leaf,
+    .particle-snowflake {
+        display: none !important;
+        animation: none !important;
+    }
+
+    .theme-popover {
+        animation: none !important;
+    }
+}
+
+/* ==========================================================================
+   Vintage Scrapbook Stationery Planner (Antique Ephemera Aesthetic)
+   Palette:
+     Main Paper:        #FFF8ED (Warm Ivory)
+     Secondary Paper:   #F2E7D5 (Aged Cream)
+     Gingham Blue:      #A9C9FF (Soft Cornflower)
+     Dusty Pink:        #E7A0AE (Muted Rose / Washi Tape)
+     Burgundy Accent:   #6C0820 (Deep Wine Ink)
+     Handwritten Ink:   #493A36 (Warm Dark Brown)
+     Botanical Accent:  #9AA58A (Muted Sage)
+     Antique Gold:      #B99A63 (Soft Brass)
+   ========================================================================== */
+.todo-board.stationery-planner {
+    --planner-paper: #FFF8ED;
+    --planner-paper-aged: #F2E7D5;
+    --planner-paper-line: rgba(185, 154, 99, 0.22);
+    --planner-gingham-blue: #A9C9FF;
+    --planner-dusty-pink: #E7A0AE;
+    --planner-burgundy: #6C0820;
+    --planner-ink: #493A36;
+    --planner-ink-muted: #826E69;
+    --planner-sage: #9AA58A;
+    --planner-brass: #B99A63;
+    --planner-brass-dark: #8B6B23;
+
+    position: absolute;
+    left: calc(25px - max(0px, (100vw - 1600px) / 2));
+    top: 51px;
+    right: auto;
+    bottom: auto;
+    transform: none;
+    width: 370px;
+    height: 245px;
+    z-index: 15;
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+}
+
+@media (min-width: 993px) {
+    .album-main-container:has(.ricordi-album.is-open) .todo-board,
+    .album-main-container.has-open-album .todo-board {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-25px) scale(0.96);
+        visibility: hidden;
+    }
+}
+
+/* Physical Artwork Layer: todo.png */
+.planner-artwork-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+    filter: drop-shadow(0 14px 28px rgba(43, 24, 28, 0.22))
+            drop-shadow(0 4px 10px rgba(43, 24, 28, 0.12));
+}
+
+/* Interactive Writing Canvas Overlay positioned directly over the cream paper area */
+.planner-content-overlay {
+    position: absolute;
+    top: 24%;
+    bottom: 16%;
+    left: 17.5%;
+    right: 18%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+    gap: 4px;
+}
+
+/* Compact Controls Bar: Vintage Filter Tabs + Add Task Button */
+.planner-controls-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    padding: 1px 2px 3px;
+    border-bottom: 1.5px solid var(--planner-paper-line);
+    flex-shrink: 0;
+}
+
+/* Vintage Paper Filter Tabs */
+.planner-tabs {
+    display: flex;
+    gap: 3px;
+}
+
+.planner-tabs .todo-tab {
+    background: rgba(242, 231, 213, 0.7);
+    color: var(--planner-ink-muted);
+    border: 1px solid rgba(185, 154, 99, 0.35);
+    border-radius: 4px;
+    padding: 2px 5px;
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(73, 58, 54, 0.06);
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    line-height: 1.3;
+}
+
+.planner-tabs .todo-tab:hover {
+    background: #EFE2CE;
+    color: var(--planner-ink);
+}
+
+.planner-tabs .todo-tab.is-active {
+    background: var(--planner-dusty-pink);
+    color: #FFFFFF;
+    border-color: #D68797;
+    font-weight: 700;
+    box-shadow: 0 2px 4px rgba(231, 160, 174, 0.35);
+}
+
+.planner-tabs .todo-tab:focus-visible {
+    outline: 2px solid var(--planner-burgundy);
+    outline-offset: 1px;
+}
+
+/* Subtle Add Task Control */
+.planner-add-btn {
+    background: transparent;
+    color: var(--planner-burgundy);
+    border: none;
+    padding: 2px 3px;
+    font-family: var(--font-body);
+    font-size: 0.70rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    white-space: nowrap;
+    transition: color 0.15s ease, transform 0.15s ease;
+    border-radius: 4px;
+    box-shadow: none;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: rgba(108, 8, 32, 0.35);
+}
+
+.planner-add-btn:hover {
+    color: #4A0516;
+    transform: translateY(-1px);
+    text-decoration-color: var(--planner-burgundy);
+    background: rgba(231, 160, 174, 0.15);
+}
+
+.planner-add-btn:focus-visible {
+    outline: 2px solid var(--planner-burgundy);
+    outline-offset: 2px;
+}
+
+.planner-add-plus {
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* Collapsible Add Task Form */
+.planner-add-form {
+    background: #FFFDF8;
+    border: 1px solid rgba(185, 154, 99, 0.4);
+    border-radius: 4px;
+    padding: 4px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    box-shadow: 0 3px 8px rgba(73, 58, 54, 0.08);
+    animation: todoSlideDown 0.18s ease-out;
+    flex-shrink: 0;
+}
+
+.planner-add-form[hidden] {
+    display: none !important;
+}
+
+.planner-form-row {
+    width: 100%;
+}
+
+.planner-input-title {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(185, 154, 99, 0.35);
+    border-radius: 3px;
+    padding: 3px 5px;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    color: var(--planner-ink);
+    background: #FFFBF3;
+}
+
+.planner-input-title:focus {
+    outline: none;
+    border-color: var(--planner-burgundy);
+    box-shadow: 0 0 0 2px rgba(108, 8, 32, 0.15);
+}
+
+.planner-form-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3px;
+}
+
+.planner-date-wrap {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.planner-date-label {
+    font-size: 0.64rem;
+    font-weight: 600;
+    color: var(--planner-ink-muted);
+}
+
+.planner-input-date {
+    border: 1px solid rgba(185, 154, 99, 0.35);
+    border-radius: 3px;
+    padding: 1px 2px;
+    font-size: 0.64rem;
+    color: var(--planner-ink);
+    background: #FFFBF3;
+    font-family: var(--font-body);
+}
+
+.planner-input-date:focus {
+    outline: none;
+    border-color: var(--planner-burgundy);
+}
+
+.planner-form-actions {
+    display: flex;
+    gap: 3px;
+}
+
+.planner-btn-cancel,
+.planner-btn-save {
+    padding: 2px 5px;
+    border: 1px solid rgba(185, 154, 99, 0.4);
+    border-radius: 3px;
+    font-size: 0.66rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.planner-btn-cancel {
+    background: var(--planner-paper-aged);
+    color: var(--planner-ink);
+}
+
+.planner-btn-save {
+    background: var(--planner-burgundy);
+    color: #FFFFFF;
+    border-color: var(--planner-burgundy);
+}
+
+.planner-btn-cancel:hover {
+    background: #E8D9C2;
+}
+
+.planner-btn-save:hover {
+    background: #4A0516;
+}
+
+/* Lined Stationery Task List Area */
+.planner-task-container {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 2px 4px 2px 0;
+    background: transparent;
+}
+
+.planner-task-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.planner-task-container::-webkit-scrollbar-track {
+    background: rgba(242, 231, 213, 0.5);
+    border-radius: 2px;
+}
+
+.planner-task-container::-webkit-scrollbar-thumb {
+    background: var(--planner-dusty-pink);
+    border-radius: 2px;
+}
+
+.planner-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.planner-list .todo-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 3px;
+    border-bottom: 1px dashed rgba(185, 154, 99, 0.22);
+    border-radius: 3px;
+    transition: background 0.15s ease;
+}
+
+.planner-list .todo-item:last-child {
+    border-bottom: none;
+}
+
+.planner-list .todo-item:hover {
+    background: rgba(242, 231, 213, 0.4);
+}
+
+/* Delicate Antique Brass Checkbox */
+.planner-list .todo-check-btn {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    border: 1.5px solid var(--planner-brass-dark);
+    border-radius: 3px;
+    background: rgba(255, 253, 248, 0.85);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    box-shadow: 0 1px 2px rgba(73, 58, 54, 0.08);
+    transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+
+.planner-list .todo-check-btn:hover {
+    border-color: var(--planner-burgundy);
+    background: #FFF2F4;
+    transform: scale(1.06);
+}
+
+.planner-list .todo-check-btn:focus-visible {
+    outline: 2px solid var(--planner-burgundy);
+    outline-offset: 1px;
+}
+
+.planner-list .todo-check-icon {
+    font-size: 9px;
+    font-weight: 900;
+    line-height: 1;
+    display: none;
+    color: var(--planner-burgundy);
+}
+
+.planner-list .todo-item.is-completed .todo-check-btn {
+    background: #F8E6E9;
+    border-color: var(--planner-burgundy);
+}
+
+.planner-list .todo-item.is-completed .todo-check-icon {
+    display: block;
+}
+
+.planner-list .todo-item-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.planner-list .todo-item-title {
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: var(--planner-ink);
+    line-height: 1.22;
+    word-break: break-word;
+}
+
+.planner-list .todo-item.is-completed .todo-item-title {
+    text-decoration: line-through;
+    text-decoration-color: rgba(108, 8, 32, 0.45);
+    color: var(--planner-ink-muted);
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.planner-list .todo-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+/* Date Badge as Delicate Paper Tag */
+.planner-list .todo-date-badge {
+    background: rgba(242, 231, 213, 0.8);
+    border: 1px solid rgba(185, 154, 99, 0.35);
+    border-radius: 2px;
+    padding: 0 3px;
+    font-family: var(--font-body);
+    font-size: 0.60rem;
+    font-weight: 600;
+    color: var(--planner-ink);
+    line-height: 1.2;
+}
+
+.planner-list .todo-date-badge.is-overdue {
+    background: #F8E6E9;
+    border-color: rgba(108, 8, 32, 0.4);
+    color: var(--planner-burgundy);
+}
+
+/* Subtle Ink Delete Button */
+.planner-list .todo-del-btn {
+    background: transparent;
+    border: none;
+    color: var(--planner-ink-muted);
+    cursor: pointer;
+    padding: 0 2px;
+    font-size: 0.82rem;
+    line-height: 1;
+    border-radius: 2px;
+    opacity: 0;
+    transition: opacity 0.15s ease, color 0.15s ease;
+    box-shadow: none;
+}
+
+.planner-list .todo-item:hover .todo-del-btn,
+.planner-list .todo-item:focus-within .todo-del-btn {
+    opacity: 0.75;
+}
+
+.planner-list .todo-del-btn:hover {
+    color: var(--planner-burgundy);
+    opacity: 1;
+}
+
+.planner-list .todo-del-btn:focus-visible {
+    opacity: 1;
+    outline: 2px solid var(--planner-burgundy);
+}
+
+/* Empty State */
+.planner-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 80px;
+    text-align: center;
+    color: var(--planner-ink-muted);
+    gap: 3px;
+    user-select: none;
+}
+
+.planner-empty-state[hidden] {
+    display: none !important;
+}
+
+.planner-empty-icon {
+    color: var(--planner-dusty-pink);
+    opacity: 0.85;
+}
+
+.planner-empty-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.74rem;
+    color: var(--planner-ink);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.planner-empty-sub {
+    font-family: var(--font-handwritten);
+    font-size: 0.88rem;
+    color: var(--planner-burgundy);
+    opacity: 0.85;
+}
+
+/* Handwritten Stationery Footer */
+.planner-footer-note {
+    font-family: var(--font-handwritten);
+    font-size: 0.88rem;
+    color: var(--planner-ink);
+    text-align: center;
+    opacity: 0.8;
+    user-select: none;
+    padding-top: 1px;
+    line-height: 1.1;
+    flex-shrink: 0;
 }
 

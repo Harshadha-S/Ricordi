@@ -16,26 +16,305 @@
     <link rel="stylesheet" th:href="@{/css/scrapbook.css}">
     <link rel="stylesheet" th:href="@{/css/album.css}">
     <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <link rel="stylesheet" th:href="@{/css/camera.css}">
+    <!-- Immediate Theme Initialization (prevents flash of wrong theme) -->
+    <script>
+        (function() {
+            try {
+                var validThemes = ['timeless', 'cherry-blossom', 'golden-summer', 'autumn-letters', 'winter-hush'];
+                var saved = localStorage.getItem('ricordi_theme');
+                var theme = (saved && validThemes.indexOf(saved) !== -1) ? saved : 'timeless';
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'timeless');
+            }
+        })();
+    </script>
 </head>
 <body>
 
 <header class="site-header">
     <div class="site-header-inner">
         <a class="brand" th:href="@{/}">
-            <img th:src="@{/images/logo.svg}" alt="Ricordi" class="brand-logo" width="38" height="38" />
+            <img th:src="@{/images/logo.svg}" alt="Ricordi" class="brand-logo" width="48" height="48" />
             <span class="brand-text">Ricordi</span>
         </a>
+
+        <!-- Accessible Themes Selector -->
+        <div class="theme-selector-wrap" id="themeSelectorWrap">
+            <button type="button"
+                    class="theme-toggle-btn"
+                    id="themeToggleBtn"
+                    aria-expanded="false"
+                    aria-haspopup="dialog"
+                    aria-controls="themePopover"
+                    aria-label="Themes: current theme Timeless">
+                <i data-lucide="palette" class="btn-icon" aria-hidden="true"></i>
+                <span class="theme-toggle-title">Themes</span>
+                <span class="theme-current-badge" id="themeCurrentBadge">Timeless</span>
+                <i data-lucide="chevron-down" class="btn-icon chevron-icon" aria-hidden="true"></i>
+            </button>
+
+            <div class="theme-popover"
+                 id="themePopover"
+                 role="dialog"
+                 aria-modal="false"
+                 aria-label="Seasonal Themes"
+                 hidden>
+                <div class="theme-popover-header">
+                    <span class="theme-popover-title">Scrapbook Atmosphere</span>
+                    <button type="button" class="theme-popover-close" id="themePopoverClose" aria-label="Close themes menu">
+                        <i data-lucide="x" class="btn-icon" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="theme-options-list" role="radiogroup" aria-label="Available seasonal themes">
+                    <button type="button"
+                            role="radio"
+                            class="theme-option"
+                            data-theme="cherry-blossom"
+                            id="theme-opt-cherry-blossom"
+                            aria-checked="false">
+                        <div class="theme-swatch-bar" aria-hidden="true">
+                            <span style="background-color: #F2AEBC;"></span>
+                            <span style="background-color: #F2DCDB;"></span>
+                            <span style="background-color: #5A86CB;"></span>
+                            <span style="background-color: #FFF9F0;"></span>
+                            <span style="background-color: #6C0820;"></span>
+                        </div>
+                        <div class="theme-meta">
+                            <span class="theme-name">Cherry Blossom</span>
+                            <span class="theme-desc">Delicate springtime petals</span>
+                        </div>
+                        <span class="theme-check-mark" aria-hidden="true">
+                            <i data-lucide="check" class="btn-icon"></i>
+                        </span>
+                    </button>
+
+                    <button type="button"
+                            role="radio"
+                            class="theme-option"
+                            data-theme="golden-summer"
+                            id="theme-opt-golden-summer"
+                            aria-checked="false">
+                        <div class="theme-swatch-bar" aria-hidden="true">
+                            <span style="background-color: #FFF9F0;"></span>
+                            <span style="background-color: #C49A52;"></span>
+                            <span style="background-color: #91B8CB;"></span>
+                            <span style="background-color: #F2DCDB;"></span>
+                            <span style="background-color: #6C0820;"></span>
+                        </div>
+                        <div class="theme-meta">
+                            <span class="theme-name">Golden Summer</span>
+                            <span class="theme-desc">Sunlit afternoon warmth</span>
+                        </div>
+                        <span class="theme-check-mark" aria-hidden="true">
+                            <i data-lucide="check" class="btn-icon"></i>
+                        </span>
+                    </button>
+
+                    <button type="button"
+                            role="radio"
+                            class="theme-option"
+                            data-theme="autumn-letters"
+                            id="theme-opt-autumn-letters"
+                            aria-checked="false">
+                        <div class="theme-swatch-bar" aria-hidden="true">
+                            <span style="background-color: #6C0820;"></span>
+                            <span style="background-color: #9B594B;"></span>
+                            <span style="background-color: #D6A16B;"></span>
+                            <span style="background-color: #FFF9F0;"></span>
+                            <span style="background-color: #5A86CB;"></span>
+                        </div>
+                        <div class="theme-meta">
+                            <span class="theme-name">Autumn Letters</span>
+                            <span class="theme-desc">Vintage paper &amp; fallen leaves</span>
+                        </div>
+                        <span class="theme-check-mark" aria-hidden="true">
+                            <i data-lucide="check" class="btn-icon"></i>
+                        </span>
+                    </button>
+
+                    <button type="button"
+                            role="radio"
+                            class="theme-option"
+                            data-theme="winter-hush"
+                            id="theme-opt-winter-hush"
+                            aria-checked="false">
+                        <div class="theme-swatch-bar" aria-hidden="true">
+                            <span style="background-color: #789DBB;"></span>
+                            <span style="background-color: #EAF2F7;"></span>
+                            <span style="background-color: #5A86CB;"></span>
+                            <span style="background-color: #FFF9F0;"></span>
+                            <span style="background-color: #6C0820;"></span>
+                        </div>
+                        <div class="theme-meta">
+                            <span class="theme-name">Winter Hush</span>
+                            <span class="theme-desc">Quiet frosty snowfall</span>
+                        </div>
+                        <span class="theme-check-mark" aria-hidden="true">
+                            <i data-lucide="check" class="btn-icon"></i>
+                        </span>
+                    </button>
+
+                    <button type="button"
+                            role="radio"
+                            class="theme-option"
+                            data-theme="timeless"
+                            id="theme-opt-timeless"
+                            aria-checked="false">
+                        <div class="theme-swatch-bar" aria-hidden="true">
+                            <span style="background-color: #6C0820;"></span>
+                            <span style="background-color: #F2AEBC;"></span>
+                            <span style="background-color: #F2DCDB;"></span>
+                            <span style="background-color: #5A86CB;"></span>
+                            <span style="background-color: #3D5D91;"></span>
+                            <span style="background-color: #FFF9F0;"></span>
+                        </div>
+                        <div class="theme-meta">
+                            <span class="theme-name">Timeless</span>
+                            <span class="theme-desc">The original Ricordi aesthetic</span>
+                        </div>
+                        <span class="theme-check-mark" aria-hidden="true">
+                            <i data-lucide="check" class="btn-icon"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </header>
 
 <main class="album-main-container">
+    <!-- Oversized Decorative Background Typography (Non-blocking, behind book) -->
+    <div class="ricordi-bg-watermark" aria-hidden="true">ricordi</div>
+
+    <!-- Seasonal Ambient Effect Layer (Non-blocking particles) -->
+    <div class="seasonal-ambient-layer" id="seasonalAmbient" aria-hidden="true"></div>
+
+    <!-- Vintage Scrapbook Stationery To-Do Board (Left-Hand Side) -->
+    <aside class="todo-board stationery-planner" id="todoBoard" aria-label="Personal Stationery Planner">
+        <!-- Physical Artwork Layer: Exact PNG artwork with transparent alpha -->
+        <img th:src="@{/images/paper_cover/todo.png}"
+             src="/images/paper_cover/todo.png"
+             class="planner-artwork-bg"
+             alt=""
+             aria-hidden="true"
+             loading="eager" />
+
+        <!-- Interactive Writing Canvas Overlay positioned directly over the cream paper area -->
+        <div class="planner-content-overlay">
+            <!-- Compact Controls Bar: Vintage Filter Tabs + Add Task Button -->
+            <div class="planner-controls-bar">
+                <div class="todo-tabs planner-tabs" role="tablist" aria-label="Task time filters">
+                    <button type="button"
+                            role="tab"
+                            class="todo-tab is-active"
+                            id="todoTabToday"
+                            data-filter="today"
+                            aria-selected="true"
+                            aria-controls="todoList">
+                        Today
+                    </button>
+                    <button type="button"
+                            role="tab"
+                            class="todo-tab"
+                            id="todoTabWeek"
+                            data-filter="week"
+                            aria-selected="false"
+                            aria-controls="todoList">
+                        This Week
+                    </button>
+                    <button type="button"
+                            role="tab"
+                            class="todo-tab"
+                            id="todoTabLater"
+                            data-filter="later"
+                            aria-selected="false"
+                            aria-controls="todoList">
+                        Later
+                    </button>
+                </div>
+                <button type="button"
+                        class="todo-add-btn planner-add-btn"
+                        id="todoAddBtn"
+                        aria-expanded="false"
+                        aria-controls="todoAddForm">
+                    <span class="planner-add-plus" aria-hidden="true">+</span> Add a task
+                </button>
+            </div>
+
+            <!-- Inline Add Task Form (collapsible stationery note) -->
+            <form class="todo-add-form planner-add-form" id="todoAddForm" hidden aria-label="Add new task">
+                <div class="todo-form-row">
+                    <input type="text"
+                           class="todo-input-title planner-input-title"
+                           id="todoInputTitle"
+                           placeholder="Write a little plan here... ♡"
+                           maxlength="80"
+                           autocomplete="off"
+                           required
+                           aria-label="Task description" />
+                </div>
+                <div class="todo-form-meta-row planner-form-meta-row">
+                    <div class="todo-date-wrap planner-date-wrap">
+                        <label for="todoInputDate" class="todo-date-label planner-date-label">Due:</label>
+                        <input type="date"
+                               class="todo-input-date planner-input-date"
+                               id="todoInputDate"
+                               aria-label="Due date (optional)" />
+                    </div>
+                    <div class="todo-form-actions planner-form-actions">
+                        <button type="button" class="todo-btn-cancel planner-btn-cancel" id="todoBtnCancel">Cancel</button>
+                        <button type="submit" class="todo-btn-save planner-btn-save" id="todoBtnSave">Save Note</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Lined Stationery Task List Area -->
+            <div class="todo-task-container planner-task-container">
+                <ul class="todo-list planner-list" id="todoList" role="list" aria-live="polite">
+                    <!-- Populated dynamically via JS -->
+                </ul>
+
+                <!-- Empty State -->
+                <div class="todo-empty-state planner-empty-state" id="todoEmptyState" hidden>
+                    <span class="planner-empty-icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 21a9 9 0 0 0 9-9c0-4.97-4.03-9-9-9s-9 4.03-9 9a9 9 0 0 0 9 9Z"/>
+                            <path d="M12 7v5l3 3"/>
+                        </svg>
+                    </span>
+                    <p class="todo-empty-text planner-empty-text">Nothing urgent today.<br><span class="planner-empty-sub">Leave a little room for life ♡</span></p>
+                </div>
+            </div>
+
+            <!-- Subtle Handwritten Stationery Footer -->
+            <div class="todo-footer-note planner-footer-note" aria-hidden="true">
+                Little by little, lovely things get done.
+            </div>
+        </div>
+    </aside>
+
+    <!-- Photo Studio entrance: front camera on the right-hand side of the book -->
+    <a class="camera-teaser" id="cameraTeaser" th:href="@{/camera}" href="/camera" aria-label="Open the Photo Studio">
+        <img th:src="@{/images/paper_cover/front-camera.png}"
+             src="/images/paper_cover/front-camera.png"
+             class="camera-teaser-img"
+             alt="Pale blue vintage digital camera"
+             width="1536" height="1024"
+             loading="eager" />
+        <span class="camera-teaser-caption">Little Moments &middot; Photo Studio</span>
+    </a>
+
     <!-- Single 365-Day Master Scrapbook Album (2027 Edition) -->
     <div th:replace="~{fragments/album :: album('Ricordi Scrapbook', '365 Days of Memories', ${albumYear ?: '2027'}, 'seal 1.jpg', 'Ricordi')}"></div>
 </main>
 
-<footer class="site-footer">
-    <div class="site-footer-inner">
-        <span>Made for memories · <span data-current-year th:text="${albumYear ?: '2027'}">2027</span></span>
+<footer class="site-footer landing-footer">
+    <div class="landing-footer-inner">
+        <span class="landing-footer-phrase">A little place for everything that matters.</span>
+        <span class="landing-footer-sep" aria-hidden="true">✦</span>
+        <span class="landing-footer-year" th:text="${albumYear ?: '2027'}">2027</span>
     </div>
 </footer>
 

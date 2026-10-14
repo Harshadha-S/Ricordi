@@ -42,4 +42,9 @@ public class HomeController {
     public String albumDemo() {
         return "album-demo";
     }
+
+    @GetMapping("/camera")
+    public String camera() {
+        return "camera";
+    }
 }

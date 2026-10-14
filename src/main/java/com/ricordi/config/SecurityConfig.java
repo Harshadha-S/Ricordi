@@ -15,8 +15,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // Disable CSRF for REST API endpoints
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(
-                                "/", "/album-demo", "/login", "/register", "/error",
-                                "/api/prompts/**", "/api/journal/**", "/api/photos/**",
+                                "/", "/album-demo", "/camera", "/login", "/register", "/error",
+                                "/api/prompts/**", "/api/journal/**", "/api/photos/**", "/api/todos/**",
                                 "/data/**",
                                 "/css/**", "/js/**", "/images/**", "/fonts/**", "/uploads/**", "/vendor/**",
                                 "/favicon.ico"

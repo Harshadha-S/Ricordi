@@ -1,5 +1,9 @@
-<footer class="site-footer" th:fragment="footer" xmlns:th="http://www.thymeleaf.org">
-    <span>Made for memories · <span data-current-year></span></span>
+<footer class="site-footer landing-footer" th:fragment="footer" xmlns:th="http://www.thymeleaf.org">
+    <div class="landing-footer-inner">
+        <span class="landing-footer-phrase">A little place for everything that matters.</span>
+        <span class="landing-footer-sep" aria-hidden="true">✦</span>
+        <span class="landing-footer-year" th:text="${albumYear ?: '2027'}">2027</span>
+    </div>
     <script th:src="@{/js/main.js}" defer></script>
 </footer>
 

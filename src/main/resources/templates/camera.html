@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Photo Studio — Ricordi</title>
+    <meta name="description" content="Ricordi Photo Studio: preview a photo on a vintage camera screen, choose a natural or black-and-white look, and download it in a Polaroid frame.">
+    <link rel="icon" type="image/svg+xml" th:href="@{/images/logo.svg}">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <link rel="stylesheet" th:href="@{/css/camera.css}">
+    <!-- Reuse the saved Ricordi theme (read-only; no photo data is ever stored) -->
+    <script>
+        (function() {
+            try {
+                var validThemes = ['timeless', 'cherry-blossom', 'golden-summer', 'autumn-letters', 'winter-hush'];
+                var saved = localStorage.getItem('ricordi_theme');
+                var theme = (saved && validThemes.indexOf(saved) !== -1) ? saved : 'timeless';
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'timeless');
+            }
+        })();
+    </script>
+</head>
+<body class="studio-body">
+
+<header class="site-header">
+    <div class="site-header-inner">
+        <a class="brand" th:href="@{/}">
+            <img th:src="@{/images/logo.svg}" alt="Ricordi" class="brand-logo" width="48" height="48" />
+            <span class="brand-text">Ricordi</span>
+        </a>
+        <a class="studio-header-link" id="studioBackLinkTop" th:href="@{/}" href="/">
+            <span aria-hidden="true">&larr;</span> Back to Ricordi
+        </a>
+    </div>
+</header>
+
+<main class="studio-main" id="studioMain">
+    <section class="studio-intro">
+        <p class="studio-kicker">Little Moments</p>
+        <h1 class="studio-title">Photo Studio</h1>
+        <p class="studio-lede">Choose a photo, pick a look, and tuck it into a Polaroid to keep.</p>
+    </section>
+
+    <div class="studio-layout">
+
+        <!-- LEFT: the camera is the interface -->
+        <section class="studio-camera-col" aria-label="Camera">
+            <div class="camera-stage" id="cameraStage">
+
+                <!-- LCD preview, sits inside the transparent screen opening of the artwork -->
+                <div class="lcd-screen" id="lcdScreen">
+                    <canvas class="lcd-canvas" id="lcdCanvas" aria-hidden="true"></canvas>
+                    <video class="lcd-video" id="lcdVideo" playsinline muted hidden></video>
+                    <div class="lcd-placeholder" id="lcdPlaceholder">
+                        <span class="lcd-placeholder-title">Choose a photo to begin</span>
+                        <span class="lcd-placeholder-sub">Upload one, or take a new one</span>
+                    </div>
+                    <div class="lcd-flash" id="lcdFlash" aria-hidden="true"></div>
+                </div>
+
+                <img class="camera-body"
+                     th:src="@{/images/paper_cover/back-camera.png}"
+                     src="/images/paper_cover/back-camera.png"
+                     alt="The back of a pale blue vintage digital camera. Its screen previews your photo."
+                     width="1555" height="1012" />
+
+                <!-- Working camera buttons: positioned over the real buttons in the artwork -->
+                <button type="button" class="cam-hotspot cam-hotspot-wide" data-action="camera"
+                        style="left:19.6%;top:3.7%;width:9.7%;height:3.1%;"
+                        aria-label="Shutter: take a photo with your camera" data-tip="Take photo"></button>
+                <button type="button" class="cam-hotspot" data-action="upload"
+                        style="left:77.3%;top:55.1%;width:4.63%;height:7.11%;"
+                        aria-label="Menu: upload a photo" data-tip="Upload"></button>
+                <a class="cam-hotspot" id="camHomeHotspot" th:href="@{/}" href="/"
+                   style="left:90.16%;top:55.5%;width:3.86%;height:5.93%;"
+                   aria-label="Home: back to Ricordi" data-tip="Back to Ricordi"></a>
+                <button type="button" class="cam-hotspot cam-hotspot-wide" data-action="zoom-out"
+                        style="left:79.4%;top:13%;width:5.8%;height:5.9%;"
+                        aria-label="W: zoom the crop out" data-tip="Zoom out"></button>
+                <button type="button" class="cam-hotspot cam-hotspot-wide" data-action="zoom-in"
+                        style="left:87.1%;top:13%;width:5.8%;height:5.9%;"
+                        aria-label="T: zoom the crop in" data-tip="Zoom in"></button>
+                <button type="button" class="cam-hotspot" data-action="look-normal"
+                        style="left:79.1%;top:70.55%;width:4.63%;height:7.11%;"
+                        aria-label="Left arrow: Normal look" data-tip="Normal"></button>
+                <button type="button" class="cam-hotspot" data-action="look-bw"
+                        style="left:88.23%;top:70.55%;width:4.63%;height:7.11%;"
+                        aria-label="Right arrow: Vintage Black and White look" data-tip="Vintage B&amp;W"></button>
+                <button type="button" class="cam-hotspot" data-action="download"
+                        style="left:83.86%;top:70.95%;width:3.86%;height:5.93%;"
+                        aria-label="Centre button: download the Polaroid" data-tip="Download"></button>
+            </div>
+
+            <!-- Plain-language controls, attached to the camera -->
+            <div class="studio-tray" role="group" aria-label="Photo controls">
+                <input type="file" id="photoFileInput" class="visually-hidden-input" tabindex="-1"
+                       accept="image/*" aria-label="Choose a photo from your device" />
+
+                <div class="tray-row">
+                    <button type="button" class="tray-btn" id="uploadBtn">Upload photo</button>
+                    <button type="button" class="tray-btn" id="cameraBtn">Take photo</button>
+                    <button type="button" class="tray-btn tray-btn-quiet" id="cancelCameraBtn" hidden>Cancel</button>
+                </div>
+
+                <div class="tray-looks" role="radiogroup" aria-label="Photo look">
+                    <button type="button" class="look-btn" role="radio" id="lookNormal" data-look="normal" aria-checked="true">Normal</button>
+                    <button type="button" class="look-btn" role="radio" id="lookBw" data-look="bw" aria-checked="false" tabindex="-1">Vintage Black &amp; White</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- RIGHT: the Polaroid -->
+        <section class="studio-polaroid-col" aria-label="Polaroid preview">
+            <div class="polaroid-stage" id="polaroidStage" tabindex="0" role="group"
+                 aria-label="Polaroid preview. Drag the photo, or use the arrow keys, to reposition it. Plus and minus change the zoom.">
+                <canvas class="polaroid-canvas" id="polaroidCanvas" width="456" height="665"></canvas>
+            </div>
+
+            <div class="polaroid-controls">
+                <label class="zoom-label" for="cropZoom">Crop zoom</label>
+                <input type="range" id="cropZoom" class="zoom-range" min="1" max="3" step="0.05" value="1" disabled />
+                <p class="polaroid-hint" id="polaroidHint">Drag the photo to adjust the crop.</p>
+                <button type="button" class="download-btn" id="downloadBtn" disabled>Download Polaroid (PNG)</button>
+                <a class="studio-back-link" id="studioBackLink" th:href="@{/}" href="/">&larr; Back to Ricordi</a>
+            </div>
+        </section>
+    </div>
+
+    <div class="studio-messages">
+        <p class="studio-status" id="studioStatus" role="status" aria-live="polite"></p>
+        <p class="studio-error" id="studioError" role="alert" hidden></p>
+    </div>
+</main>
+
+<footer class="site-footer landing-footer">
+    <div class="landing-footer-inner">
+        <span class="landing-footer-phrase">Your photos stay on this device.</span>
+        <span class="landing-footer-sep" aria-hidden="true">✦</span>
+        <span class="landing-footer-year" th:text="${albumYear ?: '2027'}">2027</span>
+    </div>
+</footer>
+
+<script th:src="@{/js/camera-studio.js}" defer></script>
+</body>
+</html>

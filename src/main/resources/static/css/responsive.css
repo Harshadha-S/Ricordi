@@ -1,3 +1,14 @@
+@media (max-width: 768px) {
+    .ricordi-bg-watermark {
+        font-size: clamp(4rem, 15vw, 8rem);
+    }
+
+    .theme-popover {
+        right: -10px;
+        width: 275px;
+    }
+}
+
 @media (max-width: 600px) {
     .paper-card {
         margin: 2rem auto;
@@ -7,7 +18,110 @@
 
     .site-header,
     .site-footer {
-        padding: 1rem;
+        padding: 0.55rem 0.8rem;
+    }
+
+    .site-footer.landing-footer {
+        padding: 0.65rem 0.8rem 1rem;
+    }
+
+    .landing-footer-inner {
+        font-size: 0.88rem;
+        gap: 0.4rem 0.6rem;
+    }
+
+    .landing-footer-year {
+        font-size: 0.78rem;
+    }
+
+    .theme-popover {
+        right: -5px;
+        width: calc(100vw - 1.5rem);
+        max-width: 280px;
     }
 }
 
+@media (max-width: 420px) {
+    .brand {
+        gap: 0.35rem;
+    }
+
+    .brand-logo {
+        height: 40px;
+        width: 40px;
+    }
+
+    .brand-text {
+        font-size: 1.22rem;
+    }
+
+    .theme-toggle-title {
+        display: none;
+    }
+
+    .theme-toggle-btn {
+        padding: 0.35rem 0.6rem;
+    }
+
+    .ricordi-bg-watermark {
+        font-size: clamp(3rem, 16vw, 5.5rem);
+    }
+}
+
+/* ==========================================================================
+   To-Do Board Responsive Rules
+   ========================================================================== */
+@media (max-width: 1250px) and (min-width: 993px) {
+    .todo-board.stationery-planner {
+        left: 20px;
+        top: 40px;
+        width: clamp(280px, 24vw, 320px);
+        height: auto;
+        aspect-ratio: 370 / 245;
+    }
+}
+
+@media (max-width: 992px) {
+    .album-main-container {
+        padding-bottom: 2.5rem;
+        justify-content: flex-start;
+    }
+
+    .ricordi-album-viewport {
+        order: 1;
+    }
+
+    .todo-board.stationery-planner {
+        position: relative;
+        top: auto;
+        right: auto;
+        left: auto;
+        bottom: auto;
+        transform: none;
+        order: 2;
+        width: min(390px, 92vw);
+        height: auto;
+        aspect-ratio: 370 / 245;
+        margin: 2.2rem auto 2.5rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .todo-board.stationery-planner {
+        width: 92vw;
+        margin: 2rem auto 1rem;
+    }
+
+    .planner-tabs .todo-tab {
+        font-size: 0.64rem;
+        padding: 2px 4px;
+    }
+
+    .planner-add-btn {
+        font-size: 0.66rem;
+    }
+
+    .planner-list .todo-item-title {
+        font-size: 0.70rem;
+    }
+}

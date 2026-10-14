@@ -1,0 +1,631 @@
+/* ==========================================================================
+   Ricordi Photo Studio — landing-page camera teaser + studio page
+   Palette: icy blue (camera/book), warm ivory paper, burgundy accents (sparingly)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Landing page: front camera on the RIGHT of the book (mirrors the planner)
+   -------------------------------------------------------------------------- */
+.camera-teaser {
+    position: absolute;
+    right: calc(25px - max(0px, (100vw - 1600px) / 2));
+    top: 51px;
+    width: 380px;
+    z-index: 15;
+    display: block;
+    text-decoration: none;
+    color: var(--burgundy);
+    border-radius: 14px;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+}
+
+.site-header a.camera-teaser:hover,
+.camera-teaser:hover {
+    color: var(--burgundy);
+}
+
+.camera-teaser-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    filter: drop-shadow(0 14px 22px rgba(43, 24, 28, 0.22))
+            drop-shadow(0 4px 8px rgba(43, 24, 28, 0.12));
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease;
+}
+
+.camera-teaser:hover .camera-teaser-img,
+.camera-teaser:focus-visible .camera-teaser-img {
+    transform: translateY(-5px) rotate(-1.2deg);
+    filter: drop-shadow(0 20px 28px rgba(43, 24, 28, 0.26))
+            drop-shadow(0 6px 10px rgba(43, 24, 28, 0.14));
+}
+
+.camera-teaser:focus-visible {
+    outline: 3px solid var(--theme-accent, #3D5D91);
+    outline-offset: 6px;
+}
+
+.camera-teaser-caption {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    margin: -8px auto 0;
+    padding: 0.28rem 1.05rem 0.32rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    color: var(--burgundy);
+    background: rgba(255, 249, 240, 0.94);
+    border: 1px solid rgba(108, 8, 32, 0.22);
+    border-radius: 999px;
+    box-shadow: 0 6px 14px rgba(43, 24, 28, 0.12);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.camera-teaser:hover .camera-teaser-caption,
+.camera-teaser:focus-visible .camera-teaser-caption {
+    transform: translateY(-2px);
+    box-shadow: 0 9px 18px rgba(43, 24, 28, 0.16);
+}
+
+/* The open book is wide: tuck the camera away exactly like the planner */
+@media (min-width: 993px) {
+    .album-main-container:has(.ricordi-album.is-open) .camera-teaser,
+    .album-main-container.has-open-album .camera-teaser {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(25px) scale(0.96);
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 1250px) and (min-width: 993px) {
+    .camera-teaser {
+        right: 20px;
+        top: 40px;
+        width: clamp(280px, 24vw, 320px);
+    }
+}
+
+@media (max-width: 992px) {
+    .camera-teaser {
+        position: relative;
+        right: auto;
+        top: auto;
+        order: 3;
+        width: min(340px, 82vw);
+        margin: 0 auto 2.5rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   2. Studio page
+   -------------------------------------------------------------------------- */
+.studio-body [hidden] { display: none !important; }
+
+.visually-hidden-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.studio-header-link {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid rgba(255, 249, 240, 0.35);
+    border-radius: 999px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.site-header .studio-header-link:hover {
+    background: rgba(255, 249, 240, 0.12);
+    border-color: rgba(255, 249, 240, 0.7);
+    color: var(--warm-ivory);
+}
+
+.site-header .studio-header-link:focus-visible,
+.site-header .brand:focus-visible {
+    outline: 3px solid var(--warm-ivory);
+    outline-offset: 3px;
+}
+
+.studio-main {
+    flex: 1;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 1.4rem 1.25rem 2.2rem;
+    box-sizing: border-box;
+}
+
+.studio-intro {
+    text-align: center;
+    margin-bottom: 1.1rem;
+}
+
+.studio-kicker {
+    margin: 0;
+    font-family: var(--font-handwritten);
+    font-size: 1.7rem;
+    line-height: 1;
+    color: var(--burgundy);
+}
+
+.studio-title {
+    margin: 0.1rem 0 0.2rem;
+    font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+    letter-spacing: 0.01em;
+}
+
+.studio-lede {
+    margin: 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--ink);
+    opacity: 0.85;
+}
+
+.studio-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.9fr) minmax(250px, 0.85fr);
+    gap: clamp(1.25rem, 3vw, 2.6rem);
+    align-items: start;
+}
+
+/* ---- Camera ------------------------------------------------------------- */
+.studio-camera-col {
+    min-width: 0;
+}
+
+.camera-stage {
+    position: relative;
+    width: 100%;
+    max-width: 780px;
+    margin: 0 auto;
+    aspect-ratio: 1555 / 1012;
+    transition: transform 0.3s ease;
+}
+
+.camera-stage.is-drop-target {
+    transform: scale(1.01);
+}
+
+.camera-stage.is-drop-target::after {
+    content: "Drop your photo";
+    position: absolute;
+    inset: 27% 44% 14% 11%;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--warm-ivory);
+    background: rgba(61, 93, 145, 0.55);
+    border: 1px dashed var(--warm-ivory);
+    z-index: 4;
+    pointer-events: none;
+}
+
+.camera-body {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+    filter: drop-shadow(0 12px 20px rgba(43, 24, 28, 0.2)) drop-shadow(0 3px 6px rgba(43, 24, 28, 0.12));
+}
+
+/* LCD sits behind the artwork, slightly oversized so the bezel hides its edges.
+   Opening measured in back-camera.png: x178 y280 w852 h597 of 1555x1012 */
+.lcd-screen {
+    position: absolute;
+    left: 11.19%;
+    top: 27.27%;
+    width: 55.31%;
+    height: 59.78%;
+    z-index: 1;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 40%, #1c2b3a 0%, #0b1015 80%);
+}
+
+.lcd-canvas,
+.lcd-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.lcd-video {
+    object-fit: contain;
+    background: #0b1015;
+}
+
+.lcd-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    text-align: center;
+    padding: 1rem;
+    color: #E9F1F8;
+    pointer-events: none;
+}
+
+.lcd-placeholder-title {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(0.95rem, 2.3vw, 1.5rem);
+}
+
+.lcd-placeholder-sub {
+    font-size: clamp(0.65rem, 1.3vw, 0.85rem);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #9DB6CB;
+}
+
+.lcd-flash {
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.lcd-flash.is-flashing {
+    animation: lcd-flash 0.5s ease-out;
+}
+
+@keyframes lcd-flash {
+    0% { opacity: 0.9; }
+    100% { opacity: 0; }
+}
+
+/* ---- Working buttons placed over the camera's real controls ------------- */
+.cam-hotspot {
+    position: absolute;
+    z-index: 3;
+    display: block;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.cam-hotspot-wide {
+    border-radius: 40%;
+}
+
+.cam-hotspot:hover,
+.cam-hotspot:focus-visible {
+    box-shadow: 0 0 0 2px rgba(255, 249, 240, 0.95), 0 0 0 4px rgba(108, 8, 32, 0.5);
+}
+
+.cam-hotspot:focus-visible {
+    outline: 3px solid var(--burgundy);
+    outline-offset: 4px;
+}
+
+.cam-hotspot::after {
+    content: attr(data-tip);
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 8px);
+    transform: translate(-50%, 4px);
+    padding: 0.18rem 0.55rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.78rem;
+    white-space: nowrap;
+    color: var(--burgundy);
+    background: var(--warm-ivory);
+    border: 1px solid rgba(108, 8, 32, 0.25);
+    border-radius: 999px;
+    box-shadow: 0 4px 10px rgba(43, 24, 28, 0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.cam-hotspot:hover::after,
+.cam-hotspot:focus-visible::after {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* ---- Tray attached under the camera -------------------------------------- */
+.studio-tray {
+    max-width: 780px;
+    margin: 0.9rem auto 0;
+    padding: 0.8rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.7rem 1.1rem;
+    background: rgba(255, 249, 240, 0.9);
+    background-image: url('../images/paper_cover/paper-texture.png');
+    background-size: 420px;
+    background-blend-mode: multiply;
+    border: 1px solid rgba(90, 134, 203, 0.35);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(43, 24, 28, 0.1);
+}
+
+.tray-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tray-btn,
+.look-btn,
+.download-btn {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    border-radius: 999px;
+    padding: 0.5rem 1.05rem;
+    min-height: 44px;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.tray-btn {
+    color: var(--burgundy);
+    background: var(--warm-ivory);
+    border: 1px solid rgba(108, 8, 32, 0.35);
+}
+
+.tray-btn:hover {
+    background: #fff;
+    border-color: var(--burgundy);
+    box-shadow: 0 4px 10px rgba(43, 24, 28, 0.12);
+}
+
+.tray-btn.is-live {
+    color: var(--warm-ivory);
+    background: var(--burgundy);
+    border-color: var(--burgundy);
+}
+
+.tray-btn-quiet {
+    background: transparent;
+    border-style: dashed;
+}
+
+.tray-looks {
+    display: inline-flex;
+    padding: 3px;
+    gap: 3px;
+    background: rgba(196, 217, 232, 0.55);
+    border: 1px solid rgba(90, 134, 203, 0.4);
+    border-radius: 999px;
+}
+
+.look-btn {
+    color: var(--lapis-lazuli, #3D5D91);
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+.look-btn[aria-checked="true"] {
+    color: var(--burgundy);
+    background: var(--warm-ivory);
+    border-color: rgba(108, 8, 32, 0.35);
+    box-shadow: 0 2px 6px rgba(43, 24, 28, 0.14);
+}
+
+.tray-btn:focus-visible,
+.look-btn:focus-visible,
+.download-btn:focus-visible,
+.zoom-range:focus-visible,
+.studio-back-link:focus-visible,
+.polaroid-stage:focus-visible {
+    outline: 3px solid var(--lapis-lazuli, #3D5D91);
+    outline-offset: 3px;
+}
+
+/* ---- Polaroid column ------------------------------------------------------ */
+.studio-polaroid-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+    min-width: 0;
+}
+
+.polaroid-stage {
+    width: min(100%, 320px);
+    border-radius: 6px;
+    cursor: default;
+}
+
+.polaroid-stage.has-photo {
+    cursor: grab;
+}
+
+.polaroid-stage.is-dragging {
+    cursor: grabbing;
+}
+
+.polaroid-canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 912 / 1329;
+    filter: drop-shadow(0 14px 22px rgba(43, 24, 28, 0.25)) drop-shadow(0 3px 6px rgba(43, 24, 28, 0.14));
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.polaroid-stage.has-photo .polaroid-canvas {
+    touch-action: none;
+}
+
+.polaroid-controls {
+    width: min(100%, 320px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.zoom-label {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--burgundy);
+}
+
+.zoom-range {
+    width: 100%;
+    accent-color: var(--burgundy);
+}
+
+.zoom-range:disabled {
+    opacity: 0.45;
+}
+
+.polaroid-hint {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--ink);
+    opacity: 0.8;
+}
+
+.download-btn {
+    margin-top: 0.3rem;
+    color: var(--warm-ivory);
+    background: var(--burgundy);
+    border: 1px solid var(--burgundy-dark);
+    box-shadow: 0 6px 14px rgba(108, 8, 32, 0.25);
+}
+
+.download-btn:hover:not(:disabled) {
+    background: var(--burgundy-light);
+    transform: translateY(-1px);
+}
+
+.download-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    box-shadow: none;
+}
+
+.studio-back-link {
+    align-self: center;
+    margin-top: 0.2rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--burgundy);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* ---- Messages --------------------------------------------------------------- */
+.studio-messages {
+    max-width: 780px;
+    margin: 1rem auto 0;
+    text-align: center;
+    min-height: 2.6rem;
+}
+
+.studio-status,
+.studio-error {
+    margin: 0;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+}
+
+.studio-status {
+    color: var(--ink);
+}
+
+.studio-status:empty {
+    padding: 0;
+}
+
+.studio-error {
+    color: #5c0a1c;
+    background: rgba(242, 220, 219, 0.9);
+    border: 1px solid rgba(108, 8, 32, 0.4);
+}
+
+/* ---- Responsive ------------------------------------------------------------- */
+@media (max-width: 900px) {
+    .studio-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .studio-main {
+        padding: 1rem 0.75rem 1.6rem;
+    }
+
+    .studio-tray {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tray-row,
+    .tray-looks {
+        justify-content: center;
+    }
+
+    .look-btn {
+        flex: 1;
+        font-size: 0.85rem;
+        padding: 0.45rem 0.6rem;
+    }
+
+    .studio-header-link {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+/* ---- Reduced motion ---------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    .camera-teaser,
+    .camera-teaser-img,
+    .camera-teaser-caption,
+    .camera-stage,
+    .tray-btn,
+    .look-btn,
+    .download-btn,
+    .cam-hotspot::after {
+        transition: none !important;
+    }
+
+    .camera-teaser:hover .camera-teaser-img,
+    .camera-teaser:focus-visible .camera-teaser-img,
+    .camera-teaser:hover .camera-teaser-caption {
+        transform: none;
+    }
+
+    .lcd-flash.is-flashing {
+        animation: none;
+    }
+}

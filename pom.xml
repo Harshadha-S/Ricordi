@@ -6,16 +6,16 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ricordi</groupId>
-    <artifactId>ricordi</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.5.6</version>
         <relativePath/>
     </parent>
+
+    <groupId>com.ricordi</groupId>
+    <artifactId>ricordi</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <java.version>21</java.version>
