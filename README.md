@@ -158,8 +158,10 @@ When contributing, please avoid committing personal journal content, uploaded ph
 
 ## License
 
-No license has been specified yet. Unless a license is added to this repository, all rights remain with the copyright holder and reuse should not be assumed to be permitted.
+Copyright © 2026 Harshadha S. All rights reserved.
 
----
+Ricordi is a personal project made publicly available for portfolio and demonstration purposes.
 
-Built with care for the memories worth keeping.
+No open-source license is granted. Unless expressly authorized in writing by the copyright holder or permitted by applicable law, no permission is granted to copy, modify, redistribute, or commercially use the original source code, design, branding, or creative assets.
+
+Third-party libraries, fonts, and assets remain subject to their respective licenses and terms.
