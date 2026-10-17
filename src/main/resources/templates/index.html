@@ -295,7 +295,7 @@
         </div>
     </aside>
 
-    <!-- Photo Studio entrance: front camera on the right-hand side of the book -->
+    <!-- Photo Studio entrance: camera grouped beneath the planner -->
     <a class="camera-teaser" id="cameraTeaser" th:href="@{/camera}" href="/camera" aria-label="Open the Photo Studio">
         <img th:src="@{/images/paper_cover/front-camera.png}"
              src="/images/paper_cover/front-camera.png"
@@ -303,8 +303,11 @@
              alt="Pale blue vintage digital camera"
              width="1536" height="1024"
              loading="eager" />
-        <span class="camera-teaser-caption">Little Moments &middot; Photo Studio</span>
     </a>
+    <img
+    id="ricordi-butterfly"
+    src="/images/paper_cover/wings.png"
+    alt=""/>
 
     <!-- Single 365-Day Master Scrapbook Album (2027 Edition) -->
     <div th:replace="~{fragments/album :: album('Ricordi Scrapbook', '365 Days of Memories', ${albumYear ?: '2027'}, 'seal 1.jpg', 'Ricordi')}"></div>

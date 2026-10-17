@@ -71,16 +71,6 @@
 /* ==========================================================================
    To-Do Board Responsive Rules
    ========================================================================== */
-@media (max-width: 1250px) and (min-width: 993px) {
-    .todo-board.stationery-planner {
-        left: 20px;
-        top: 40px;
-        width: clamp(280px, 24vw, 320px);
-        height: auto;
-        aspect-ratio: 370 / 245;
-    }
-}
-
 @media (max-width: 992px) {
     .album-main-container {
         padding-bottom: 2.5rem;
@@ -123,5 +113,38 @@
 
     .planner-list .todo-item-title {
         font-size: 0.70rem;
+    }
+}
+
+
+/* Butterfly — position and scale correction */
+.landing-butterfly {
+    position: absolute;
+    width: clamp(300px, 23vw, 370px);
+    height: auto;
+    top: clamp(65px, 8vh, 100px);
+    right: clamp(65px, 7vw, 115px);
+    left: auto;
+    bottom: auto;
+    max-width: none;
+    object-fit: contain;
+    display: block;
+    z-index: 12;
+    pointer-events: none;
+}
+
+@media (max-width: 992px) {
+    .landing-butterfly {
+        width: clamp(150px, 22vw, 220px);
+        top: 85px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .landing-butterfly {
+        width: 125px;
+        top: 90px;
+        right: 10px;
     }
 }

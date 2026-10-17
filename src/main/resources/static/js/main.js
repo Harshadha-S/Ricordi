@@ -675,15 +675,24 @@ function initTodoBoard() {
     render();
     loadTasks();
 
+    
+
     // Synchronize with Scrapbook open/close state
     const albumMaster = document.getElementById("ricordi-album-master");
     const container = document.querySelector(".album-main-container");
     if (albumMaster && container) {
-        const observer = new MutationObserver(() => {
-            const isOpen = albumMaster.classList.contains("is-open");
-            container.classList.toggle("has-open-album", isOpen);
-        });
-        observer.observe(albumMaster, { attributes: true, attributeFilter: ["class"] });
-    }
-}
+    const syncAlbumState = () => {
+        const isOpen = albumMaster.classList.contains("is-open");
 
+        container.classList.toggle("has-open-album", isOpen);
+        document.body.classList.toggle("album-open", isOpen);
+    };
+
+    const observer = new MutationObserver(syncAlbumState);
+
+    observer.observe(albumMaster, {
+        attributes: true,
+        attributeFilter: ["class"]
+    });
+        syncAlbumState();
+}}
