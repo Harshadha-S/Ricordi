@@ -284,6 +284,9 @@
     object-fit: contain;
     background: #0b1015;
 }
+.lcd-video.is-bw {
+    filter: grayscale(1) contrast(1.08);
+}
 
 .lcd-placeholder {
     position: absolute;
@@ -514,14 +517,22 @@
     touch-action: none;
 }
 
+
 .polaroid-controls {
     width: min(100%, 320px);
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.65rem;
+    padding: 0.9rem;
+    background: rgba(255, 249, 240, 0.78);
+    border: 1px solid rgba(108, 8, 32, 0.16);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(43, 24, 28, 0.08);
 }
 
 .zoom-label {
+    margin: 0;
     font-family: var(--font-display);
     font-style: italic;
     font-size: 0.95rem;
@@ -530,6 +541,7 @@
 
 .zoom-range {
     width: 100%;
+    margin: 0;
     accent-color: var(--burgundy);
 }
 
@@ -540,12 +552,14 @@
 .polaroid-hint {
     margin: 0;
     font-size: 0.8rem;
+    line-height: 1.45;
     color: var(--ink);
     opacity: 0.8;
 }
 
 .download-btn {
-    margin-top: 0.3rem;
+    width: 100%;
+    margin-top: 0.15rem;
     color: var(--warm-ivory);
     background: var(--burgundy);
     border: 1px solid var(--burgundy-dark);
@@ -572,6 +586,16 @@
     text-decoration: underline;
     text-underline-offset: 3px;
     border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .download-btn {
+        transition: none;
+    }
+
+    .download-btn:hover:not(:disabled) {
+        transform: none;
+    }
 }
 
 /* ---- Messages --------------------------------------------------------------- */

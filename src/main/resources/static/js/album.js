@@ -627,7 +627,6 @@ function renderLeftPageHtml(date, dayOfYear, prompt) {
 
     return `
         <!-- Scrapbook Washi Tape Accent (Non-blocking) -->
-        <div class="sw-tape-strip sw-tape-strip-pink tape-top-left" aria-hidden="true"></div>
 
         <div class="ricordi-day-header">
             <span class="ricordi-day-title">DAY ${dayOfYear} OF ${TOTAL_DAYS}</span>
@@ -689,8 +688,6 @@ function renderRightPageHtml(date, dayOfYear) {
 
     return `
         <!-- Scrapbook Washi Tape Accent (Non-blocking) -->
-        <div class="sw-tape-strip sw-tape-strip-blue tape-top-right" aria-hidden="true"></div>
-
         <div class="ricordi-journal-header">
             <h3 class="ricordi-journal-heading">${heading}</h3>
             <span class="ricordi-journal-tag">Day ${dayOfYear}</span>

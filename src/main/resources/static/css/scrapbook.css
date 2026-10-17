@@ -64,17 +64,16 @@
 }
 
 .tape-top-left {
-    top: -6px;
+    top: 4px;
     left: 40px;
     transform: rotate(-4deg);
 }
 
 .tape-top-right {
-    top: -6px;
+    top: 4px;
     right: 40px;
     transform: rotate(3deg);
 }
-
 .scrawl-paper-card {
     border-radius: 8px !important;
     border: 1.5px solid var(--cherry-blossom) !important;

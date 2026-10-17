@@ -236,6 +236,7 @@
         els.lcdPlaceholder.hidden = hasPhoto || live;
         els.lcdCanvas.hidden = live;
         els.lcdVideo.hidden = !live;
+        els.lcdVideo.classList.toggle('is-bw', state.look === 'bw');
         els.zoom.disabled = !hasPhoto;
         els.zoom.value = String(state.zoom);
         els.downloadBtn.disabled = !(hasPhoto && state.frameOk) || state.busy;
