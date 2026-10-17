@@ -1,0 +1,58 @@
+<!-- Add Stickers component. Include with: <div th:replace="~{fragments/add-stickers :: addStickers}"></div> -->
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="addStickers" class="rs-component" id="rsAddStickersComponent">
+    <button type="button" class="rs-open-button" id="rsOpenStickers" aria-haspopup="dialog" aria-controls="rsStickerDialog">
+        <span aria-hidden="true">✿</span> Decorate page
+    </button>
+
+    <section class="rs-dialog" id="rsStickerDialog" role="dialog" aria-modal="true" aria-labelledby="rsDialogTitle" hidden>
+        <div class="rs-dialog-backdrop" data-rs-close></div>
+        <div class="rs-dialog-panel">
+            <header class="rs-dialog-header">
+                <div>
+                    <p class="rs-eyebrow">YOUR LITTLE CORNER</p>
+                    <h2 id="rsDialogTitle">Decorate your page</h2>
+                    <p class="rs-dialog-subtitle">Pick a piece, then make it yours ♡</p>
+                </div>
+                <button type="button" class="rs-icon-button" data-rs-close aria-label="Close decorations">×</button>
+            </header>
+
+            <div class="rs-workspace">
+                <aside class="rs-library" aria-label="Decoration library">
+                    <label class="rs-search-label" for="rsSearch">Find a decoration</label>
+                    <input id="rsSearch" class="rs-search" type="search" placeholder="Search decorations…" autocomplete="off">
+                    <div class="rs-category-list" id="rsCategories" role="group" aria-label="Decoration categories"></div>
+                    <div class="rs-library-grid" id="rsLibraryGrid" aria-live="polite"></div>
+                    <p class="rs-library-hint">Select any piece to add it to your open scrapbook spread.</p>
+                </aside>
+
+                <section class="rs-editor" aria-label="Page decoration editor">
+                    <div class="rs-editor-topline">
+                        <span class="rs-current-date" id="rsCurrentDate">January 1, 2027</span>
+                        <span class="rs-save-status" id="rsSaveStatus" aria-live="polite">Saved in this browser</span>
+                    </div>
+                    <div class="rs-canvas-frame">
+                        <div class="rs-canvas" id="rsCanvas" aria-label="Scrapbook decoration canvas">
+                            <p class="rs-canvas-empty" id="rsCanvasEmpty">Choose a decoration to begin ♡</p>
+                        </div>
+                    </div>
+                    <div class="rs-selection-tools" id="rsSelectionTools" aria-label="Selected decoration controls" hidden>
+                        <span class="rs-selected-label" id="rsSelectedLabel">Selected decoration</span>
+                        <label class="rs-tool-field">Size <input id="rsSize" type="range" min="35" max="240" value="100"></label>
+                        <label class="rs-tool-field">Rotate <input id="rsRotation" type="range" min="-180" max="180" value="0"></label>
+                        <button type="button" class="rs-tool-button" id="rsBringForward">Bring forward</button>
+                        <button type="button" class="rs-tool-button" id="rsSendBackward">Send backward</button>
+                        <button type="button" class="rs-tool-button" id="rsDuplicate">Duplicate</button>
+                        <button type="button" class="rs-tool-button rs-delete-button" id="rsDelete">Remove</button>
+                    </div>
+                    <footer class="rs-editor-footer">
+                        <span>Drag to move · Use sliders to adjust</span>
+                        <div class="rs-footer-actions">
+                            <button type="button" class="rs-text-button" id="rsClearPage">Clear page</button>
+                            <button type="button" class="rs-done-button" data-rs-close>Done</button>
+                        </div>
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </section>
+</div>

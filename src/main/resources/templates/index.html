@@ -10,7 +10,7 @@
     <link rel="stylesheet" th:href="@{/vendor/filepond/filepond.min.css}">
     <link rel="stylesheet" th:href="@{/vendor/filepond/filepond-plugin-image-preview.min.css}">
     <link rel="stylesheet" th:href="@{/vendor/scrawl-ui/scrawl.css}">
-
+    <link rel="stylesheet" th:href="@{/css/add-stickers.css}">
     <!-- Application CSS -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/scrapbook.css}">
@@ -310,7 +310,7 @@
     alt=""/>
 
     <!-- Single 365-Day Master Scrapbook Album (2027 Edition) -->
-    <div th:replace="~{fragments/album :: album('Ricordi Scrapbook', '365 Days of Memories', ${albumYear ?: '2027'}, 'seal 1.jpg', 'Ricordi')}"></div>
+    <div th:replace="~{fragments/album :: album('Ricordi Scrapbook', '365 Days of Memories', ${albumYear ?: '2027'}, 'seal 1.png', 'Ricordi')}"></div>
 </main>
 
 <footer class="site-footer landing-footer">
@@ -334,5 +334,6 @@
 <!-- Application JavaScript -->
 <script th:src="@{/js/main.js}" defer></script>
 <script th:src="@{/js/album.js}" defer></script>
+<script th:src="@{/js/add-stickers.js}" defer></script>
 </body>
 </html>

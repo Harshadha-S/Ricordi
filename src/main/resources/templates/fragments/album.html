@@ -111,7 +111,7 @@
 
                 <!-- Wax Seal -->
                 <div class="ricordi-album-seal">
-                    <img th:src="@{/images/decorations/__${sealImage ?: 'seal 1.jpg'}__}"
+                    <img th:src="@{/images/decorations/__${sealImage ?: 'seal 1.png'}__}"
                          alt="Wax Seal"
                          class="ricordi-album-seal-img" />
                 </div>
@@ -153,6 +153,7 @@
             </button>
         </div>
     </div>
+    <div th:replace="~{fragments/add-stickers :: addStickers}"></div>
 
 </div>
 
